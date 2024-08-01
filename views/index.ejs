@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <title>Jiatong Watches</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">Jiatong Watches</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/add">Add New Watch</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  <div class="container">
+    <br>
+    <div class="text-center"><h2>Watch Listings</h2></div>
+    <br>
+    <div class="row">
+      <% for(let i = 0; i < listings.length; i++) { %>
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <img class="card-img-top" src="files/<%= listings[i].file %>" alt="<%= listings[i].name %>">
+            <div class="card-body">
+              <h5 class="card-title"><a href="/listing/<%= listings[i].id %>"><%= listings[i].name %></a></h5>
+              <p class="card-text">Brand: <%= listings[i].brand %></p>
+              <p class="card-text">Price: $<%= listings[i].price %></p>
+              <p class="card-text">Condition: <%= listings[i].watchcon %></p>
+              <a href="/edit/<%= listings[i].id %>" class="btn btn-primary">Edit</a>
+              <a href="/delete/<%= listings[i].id %>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this listing?')">Delete</a>
+            </div>
+          </div>
+        </div>
+      <% } %>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

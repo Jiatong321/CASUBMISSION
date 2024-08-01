@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <title>Jiatong Watches</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Jiatong Watches</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/add">Add New Watch</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <br>
+        <div class="text-center"><h2>Update Watch</h2></div>
+        <br>
+        <div class="text-center">
+          <% if (listing) { %>
+            <form action="/edit/<%= listing.id %>" method="POST" enctype="multipart/form-data">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" value="<%= listing.name %>" required><br><br>
+
+                <label for="price">Price:</label><br>
+                <input type="number" id="price" name="price" value="<%= listing.price %>" required><br><br>
+
+                <label for="brand">Brand:</label><br>
+                <input type="text" id="brand" name="brand" value="<%= listing.brand %>" required><br><br>
+
+                <label for="watchcon">Condition:</label><br>
+                <input type="text" id="watchcon" name="watchcon" value="<%= listing.watchcon %>" required><br><br>
+
+                <label for="description">Description:</label><br>
+                <textarea id="description" name="description" rows="3" required><%= listing.description %></textarea><br><br>
+
+                <label for="file">Current File:</label><br>
+                <input type="text" name="currentFile" value="<%= listing.file %>" disabled><br>
+                <a href="/files/<%= listing.file %>" download><%= listing.file %></a><br><br>
+
+                <label for="file">New File:</label><br>
+                <input type="file" name="file" id="file" accept="file/*"><br><br>
+
+                <button type="submit" class="btn btn-primary">Update Listing</button>
+            </form>
+          <% } else { %>
+              <p>No listing found.</p>
+          <% } %>
+          <a href="/">Back</a>
+        </div>
+    </div>
+</body>
+</html>
