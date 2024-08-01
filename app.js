@@ -12,10 +12,10 @@
         //database: 'watchlist',
         //port: 3316
 
-        host: 'alwaysdata.com',
+        host: 'mysql-jiatong.alwaysdata.net',
         user: 'jiatong',
         password: 'SJT@T0508309A',
-        database: 'Jiatong_123',
+        database: 'jiatong_123',
         
     });
 
